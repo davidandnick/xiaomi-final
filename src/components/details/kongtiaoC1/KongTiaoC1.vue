@@ -1,0 +1,215 @@
+<template>
+  <div class="kongtiaoC1">
+    <HeaderWrapper @back="$emit('back')"/>
+    <PictureDisplay
+      :sliderWidth="sliderWidth"
+      :sliderHeight="sliderHeight"
+      :sliderNumber="sliderNumber"
+      :images="images"
+    />
+    <Description :product="product"/>
+    <Configuration :product="product"/>
+    <Choose :product="product"/>
+    <Comment :product="product" :commentNumber="commentNumber"/>
+    <div class="images">
+      <div class="img1">
+        <img src="./photo4/01.jpg">
+      </div>
+      <div class="img2">
+        <img src="./photo4/02.jpg">
+      </div>
+      <div class="img3">
+        <img src="./photo4/03.jpg">
+      </div>
+      <div class="img4">
+        <img src="./photo4/04.jpg">
+      </div>
+      <div class="img5">
+        <img src="./photo4/05.png">
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import HeaderWrapper from '../header-wrapper/HeaderWrapper.vue';
+import PictureDisplay from '../../picture-display/PictureDisplay.vue';
+import Description from '../description/Description.vue';
+import Configuration from '../configuration/Configuration.vue';
+import Choose from '../choose/Choose.vue';
+import Comment from '../comment/Comment.vue';
+
+// 轮播图的图片
+import imgA from './photo1/01.jpg';
+import imgB from './photo1/02.jpg';
+
+// 配置的图片
+import img1 from './photo2/01.png';
+import img2 from './photo2/02.png';
+import img3 from './photo2/03.png';
+import img4 from './photo2/04.png';
+import img5 from './photo2/05.png';
+
+// 评论的图片
+// 其中头像的图片
+import head1 from './photo3/head01.jpg';
+import head2 from './photo3/head02.jpg';
+import head3 from './photo3/head03.jpg';
+// 展示的图片
+import main1 from './photo3/01.jpg';
+import main2 from './photo3/02.jpg';
+import main3 from './photo3/03.jpg';
+import main4 from './photo3/04.jpg';
+import main5 from './photo3/05.jpg';
+
+export default {
+  name: 'kongtiaoC1',
+  data: function() {
+    return {
+      sliderNumber: 2, // 滑块的数量（即图片的数量）
+      // 轮播图图片信息和路径
+      images: [
+        {id: 0, src: imgA},
+        {id: 1, src: imgB}
+      ],
+      commentNumber: 3, // 评论滑块的数量
+      // 产品信息
+      product: {
+        name: '空调C1（1.5匹/定频/三级能效）',
+        information: '1.5匹 / 静音设计 / 快速制冷热 / 出风干净 / 全屋互联 / 售后无忧 / 官网购买，免预约安装，签收后服务人员主动联系',
+        extraInformation: '',
+        price: '￥1799',
+        oldPrice: '￥1899',
+        choose: '空调C1（1.5匹/定频/三级能效） x 1',
+        configurations: [
+          {
+            id: 0,
+            image: img1,
+            name: '匹数',
+            value: '1.5匹'
+          },
+          {
+            id: 1,
+            image: img2,
+            name: '定频 / 变频',
+            value: '定频'
+          },
+          {
+            id: 2,
+            image: img3,
+            name: '能效等级',
+            value: '3级'
+          },
+          {
+            id: 3,
+            image: img4,
+            name: '适用面积',
+            value: '约16-20㎡'
+          },
+          {
+            id: 4,
+            image: img5,
+            name: '制冷类型',
+            value: '冷暖'
+          }
+        ],
+        comments: [
+          {
+            id: 0,
+            headImage: head1,
+            name: '于学谦',
+            date: '2019-09-12',
+            like: 2,
+            content: '安装服务很好，很满意',
+            photos: [
+              {id: 0, image: main1}
+            ],
+            reply: {}
+          },
+          {
+            id: 1,
+            headImage: head2,
+            name: '2199199628胡强',
+            date: '2019-09-14',
+            like: 1,
+            content: '安装师傅安装很专业，态度不错！',
+            photos: [
+              {id: 0, image: main2}
+            ],
+            reply: {}
+          },
+          {
+            id: 2,
+            headImage: head3,
+            name: '陈龙',
+            date: '2019-09-07',
+            like: 1,
+            content: '两位安装师傅非常棒，技术专业，安装速度飞快，大赞。',
+            photos: [
+              {id: 0, image: main3},
+              {id: 1, image: main4},
+              {id: 2, image: main5}
+            ],
+            reply: {}
+          }
+        ]
+      }
+    }
+  },
+  computed: {
+    // 滑块的宽度,等于屏幕宽度
+    sliderWidth: function() {
+      return document.body.clientWidth;
+    },
+    // 滑块的高度
+    sliderHeight: function() {
+      return document.body.clientWidth*1.1;
+    }
+  },
+  components: {
+    HeaderWrapper,
+    PictureDisplay,
+    Description,
+    Configuration,
+    Choose,
+    Comment
+  }
+}
+</script>
+<style lang="less" scoped>
+  .kongtiaoC1 {
+    position: relative;
+    .images {
+      font-size: 0;
+      .img1 {
+        img {
+          width: 12.5rem;
+          height: 14.8rem;
+        }
+      }
+      .img2 {
+        img {
+          width: 12.5rem;
+          height: 15.4rem;
+        }
+      }
+      .img3 {
+        img {
+          width: 12.5rem;
+          height: 14.2rem;
+        }
+      }
+      .img4 {
+        img {
+          width: 12.5rem;
+          height: 7rem;
+        }
+      }
+      .img5 {
+        img {
+          width: 12.5rem;
+          height: 4.93rem;
+        }
+      }
+    }
+  }
+</style>
